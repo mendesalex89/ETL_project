@@ -1,6 +1,3 @@
-# ETL_project
-
-
 # ETL Insurance Project
 
 ## Overview
