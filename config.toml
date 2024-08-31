@@ -1,0 +1,7 @@
+[theme]
+primaryColor="#1DA0FF"
+backgroundColor="#2F3035"
+secondaryBackgroundColor="#000000"  # Corrigido para a cor preta
+textColor="#ffffff"
+font="sans serif"
+

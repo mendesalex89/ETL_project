@@ -16,8 +16,20 @@ This project demonstrates a complete ETL (Extract, Transform, Load) process usin
 
 ## Project Structure
 
-ETL-Insurance-Project/ │ ├── data/ │ ├── insurance.csv │ ├── scripts/ │ ├── etl.py │ ├── dashboard.py │ ├── README.md │ ├── requirements.txt │ └── .gitignore
-
+ETL-Insurance-Project/
+│
+├── data/
+│   ├── insurance.csv
+│
+├── scripts/
+│   ├── etl.py
+│   ├── dashboard.py
+│
+├── style.css
+├── config.toml
+├── README.md
+├── requirements.txt
+└── .gitignore
 
 ## Technologies Used
 - **SQL Server**: For database management.
@@ -42,3 +54,23 @@ ETL-Insurance-Project/ │ ├── data/ │ ├── insurance.csv │ ├�
    cd ETL_project
 
 
+
+
+## Negotiation questions 
+
+
+What factors most influence the cost of health insurance?
+
+Analysis of the impact of age, BMI, number of children, smoking and region on the cost.
+Is there transparency between smoking and insurance costs?
+
+Compare the average cost between smokers and non-smokers.
+How does the cost of insurance vary by region?
+
+Analyze the distribution of costs in different regions.
+What is the distribution of BMI between different age groups and how does this impact costs?
+
+Check how obesity (high BMI) at different ages influences the cost of insurance.
+What is the typical profile of those expected to have higher insurance costs?
+
+identify common characteristics in beneficiaries who pay more for insurance.
