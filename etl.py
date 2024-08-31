@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import pyodbc
 import numpy as np
 import plotly.io as pio
 
@@ -50,19 +49,8 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# Connect to SQL Server
-connection_string = (
-    "Driver={ODBC Driver 17 for SQL Server};"
-    "Server=DESKTOP-LG5APUO;"
-    "Database=project_data;"
-    "Trusted_Connection=yes;"
-)
-
-connection = pyodbc.connect(connection_string)
-
-# Load data from the database
-query = "SELECT * FROM insurance"
-df = pd.read_sql(query, connection)
+# Load data from the CSV file
+df = pd.read_csv('insurance.csv')
 
 # Ensure numeric values are converted correctly
 df['charges'] = pd.to_numeric(df['charges'], errors='coerce')
