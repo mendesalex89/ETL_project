@@ -4,6 +4,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
 import plotly.io as pio
+import openai
+
+# Set your OpenAI API key
+openai.api_key = "xxxxxxxxx"
 
 # Define a custom Plotly template
 pio.templates["custom"] = {
@@ -50,7 +54,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Load data from the CSV file
-df = pd.read_csv('insurance.csv')
+df = pd.read_csv("insurance.csv")
 
 # Ensure numeric values are converted correctly
 df['charges'] = pd.to_numeric(df['charges'], errors='coerce')
@@ -211,6 +215,7 @@ fig5.update_layout(
     plot_bgcolor='white', 
     paper_bgcolor='white', 
     font=dict(color='black'),
+    legend_title_text="Smoking Status",
     legend=dict(
         font=dict(color='black'),
         bordercolor='black',
@@ -218,3 +223,27 @@ fig5.update_layout(
     )
 )
 st.plotly_chart(fig5, use_container_width=True)
+
+# ChatGPT integration for answering business questions
+def ask_gpt_with_data(question, df):
+    prompt = f"Using the provided health insurance dataset, please answer the following question:\n\n{question}\n\nHere is the summary of the dataset:\n{df.describe(include='all')}"
+    
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a data analyst."},
+            {"role": "user", "content": prompt}
+        ]
+    )
+    
+    return response.choices[0].message['content']
+
+# Input for the business question
+st.header("Ask a Question")
+question = st.text_input("Enter your business question:")
+
+if question:
+    answer = ask_gpt_with_data(question, df)
+    st.write("### Answer:")
+    # Display the answer with custom color (white text)
+    st.markdown(f"<div style='color: white;'>{answer}</div>", unsafe_allow_html=True)
